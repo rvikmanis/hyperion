@@ -1,0 +1,26 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo;
+{% for app in app_list %}
+{% blocktrans with app.name as name %}{{ name }}{% endblocktrans %}
+{% endfor %}
+</div>
+{% endblock %}
+{% endif %}
+
+{% load hyperion_tags %}
+
+{% block content %}
+<div id="content-main">
+
+{% admin_menu user template='hyperion/_admin_app_list.html' limit_to_app=app_list.0.name|lower %}
+
+</div>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

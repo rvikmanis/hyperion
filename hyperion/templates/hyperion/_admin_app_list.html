@@ -1,0 +1,34 @@
+{% load i18n %}
+
+{% for app_label, app in apps %}
+    <div class="module">
+    <table>
+    <caption>
+        <a href="{{ app.url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
+            {% blocktrans with name=app.name %}{{ name }}{% endblocktrans %}
+        </a>
+    </caption>
+    {% for model_module_name, model in app.models %}
+        <tr>
+            <th scope="row"><a href="{{ model.url }}">{{ model.name }}</a></th>
+
+
+            {% if model.add_url %}
+
+            <td><a href="{{ model.add_url }}" class="addlink">{% trans 'Add' %}</a></td>
+
+            {% else %}
+
+            <td>&nbsp;</td>
+
+            {% endif %}
+
+            <td><a href="{{ model.url }}" class="changelink">{% trans 'Change' %}</a></td>
+            <td>&nbsp;</td>
+        </tr>
+    {% endfor %}
+    </table>
+    </div>
+{% empty %}
+    <p>{% trans "You don't have permission to edit anything." %}</p>
+{% endfor %}

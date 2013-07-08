@@ -1,0 +1,14 @@
+<li>
+    <a href="{% url 'admin:index' %}">Dashboard</a>
+</li>
+
+{% for app_name, app in apps %}
+<li>
+    <a href="{{ app.url }}">{{ app.name }}</a>
+    <ul>
+        {% for model_module_name, model in app.models %}
+        <li><a href="{{ model.url }}">{{ model.name }}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+{% endfor %}

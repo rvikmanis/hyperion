@@ -1,0 +1,103 @@
+__author__ = 'Dzedajs'
+
+from django import template
+from django.contrib.admin import site
+from django.utils.text import capfirst
+from django.core.urlresolvers import reverse
+from django.template.loader import render_to_string
+from django.conf import settings
+
+register = template.Library()
+try:
+    hyperion_menu_overrides = settings.__getattr__('HYPERION_MENU_OVERRIDES')
+except AttributeError:
+    hyperion_menu_overrides = {}
+
+
+
+
+def admin_menu(user, template='hyperion/_admin_menu.html', for_menu=False, limit_to_app=None):
+    DEFAULT_ORDER = 10000
+
+    apps = []
+    for model, model_admin in site._registry.items():
+        app_label = model._meta.app_label
+        model_module_name = model._meta.module_name
+        model_name = capfirst(model._meta.verbose_name)
+        model_name_plural = capfirst(model._meta.verbose_name_plural)
+
+        if limit_to_app and limit_to_app != app_label:
+            continue
+
+        if user.has_module_perms(app_label):
+
+            if user.has_perm('%s.change_%s' % (app_label, model_module_name)):
+
+
+
+                if not app_label in dict(apps).keys():
+                    if app_label in hyperion_menu_overrides.keys():
+                        app_name = hyperion_menu_overrides[app_label].get('name', app_label.title())
+                        order = hyperion_menu_overrides[app_label].get('order', DEFAULT_ORDER)
+                    else:
+                        app_name = app_label.title()
+                        order = DEFAULT_ORDER
+                    app_dict = {
+                        'models': [],
+                        'url': reverse('admin:app_list', kwargs={'app_label': app_label}),
+                        'name': app_name,
+                        'order': order
+                    }
+                    if for_menu and app_label in hyperion_menu_overrides.keys() and hyperion_menu_overrides[app_label].get('exclude', False):
+                        continue
+                    else:
+                        apps.append( (app_label, app_dict) )
+
+
+
+                model_full_dotted_name = (app_label, model_module_name)
+                app_index = [ apps.index(a) for a in apps if a[0]==app_label ][0]
+
+                if model_full_dotted_name in hyperion_menu_overrides.keys():
+                    model_display_name = hyperion_menu_overrides[model_full_dotted_name].get('name', model_name_plural)
+                    order = hyperion_menu_overrides[model_full_dotted_name].get('order', DEFAULT_ORDER)
+
+                else:
+                    model_display_name = model_name_plural
+                    order = DEFAULT_ORDER
+
+                if user.has_perm('%s.add_%s' % (app_label, model_module_name)):
+                    add_url = reverse('admin:%s_%s_add' % (app_label, model_module_name))
+                else:
+                    add_url = None
+
+                model_dict = {
+                    'name': model_display_name,
+                    'name_singular': model_name,
+                    'url': reverse('admin:%s_%s_changelist' % (app_label, model_module_name)),
+                    'add_url': add_url,
+                    'order': order
+                }
+                if for_menu and model_full_dotted_name in hyperion_menu_overrides.keys() and hyperion_menu_overrides[model_full_dotted_name].get('exclude', False):
+                    continue
+                else:
+                    apps[app_index][1]['models'].append( (model_module_name, model_dict) )
+
+
+
+    apps = sorted(apps, lambda x,y: cmp(x[1]['order'], y[1]['order']))
+    for app_label, app in apps:
+        app['models'] = sorted(app['models'], lambda x,y: cmp(x[1]['order'], y[1]['order']))
+    return render_to_string(template, {'apps': apps})
+
+register.simple_tag(admin_menu)
+
+
+
+
+
+def app_title(app_label, default=None):
+    if app_label in hyperion_menu_overrides.keys():
+        return hyperion_menu_overrides[app_label].get('name', default)
+
+register.simple_tag(app_title)
