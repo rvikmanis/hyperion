@@ -17,7 +17,7 @@ Screenshots
 ----------------
 
 Change list:
-![Screenshot #1](http://s8.postimg.org/uegi4yzar/hyperion_list.png)
+![Screenshot #1](http://oi44.tinypic.com/v6rupd.jpg)
 
 Change form:
 ![Screenshot #2](http://s2.postimg.org/432zgo2op/hyperion.png)
