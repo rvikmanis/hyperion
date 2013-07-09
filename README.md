@@ -9,7 +9,7 @@ Features
 --------------
 
 * Looks good
-* Styles for feinCMS' item editor
+* Styles for FeinCMS item editor
 * Configurable admin-wide navigation
 * Pretty app labels
 
@@ -18,6 +18,12 @@ Requirements
 ------------------
 
 * Django 1.5
+
+
+Compatible with
+------------------
+
+* FeinCMS 1.7.4
 
 
 
