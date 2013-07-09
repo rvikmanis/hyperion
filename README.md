@@ -28,7 +28,7 @@ Requirements
 * Django 1.5
 
 
-Compatible with
+Compatibility
 ------------------
 
 * FeinCMS 1.7.4
