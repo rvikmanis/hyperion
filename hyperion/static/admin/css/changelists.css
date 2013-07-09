@@ -2,7 +2,8 @@
 
 #changelist {
     position: relative;
-    width: 100%;
+    /*margin-top: -20px;
+    */width: 100%;
 }
 
 #changelist table {
@@ -113,20 +114,20 @@
 /* FILTER COLUMN */
 
 #changelist-filter {
-    position: absolute;
+    /*position: absolute;
     top: 0;
-    right: 0;
-    z-index: 1000;
-    width: 160px;
-    border-left: 1px solid #ddd;
+    right: 0;*/
     background: #efefef;
     margin: 0;
+    margin-top: -15px;
+    padding-left: 15px;
 }
 
 #changelist-filter h2 {
     font-size: 11px;
     padding: 2px 5px;
     border-bottom: 1px solid #ddd;
+    margin-left: -15px;
 }
 
 #changelist-filter h3 {
@@ -299,6 +300,6 @@
     background: none;
     color: black;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1em;
     text-transform: uppercase;
 }
