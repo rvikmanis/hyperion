@@ -16,8 +16,11 @@ Features
 Screenshots
 ----------------
 
+Change list:
 ![Screenshot #1](http://s8.postimg.org/uegi4yzar/hyperion_list.png)
 
+Change form:
+![Screenshot #2](http://s2.postimg.org/432zgo2op/hyperion.png)
 
 
 Requirements
