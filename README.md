@@ -3,8 +3,6 @@ Hyperion - django administration theme
 
 A nice simple theme for django admin.
 
-This package is early pre-alpha. Future changes will break stuff.
-
 ![Screenshot #1](http://s2.postimg.org/432zgo2op/hyperion.png)
 
 Features
