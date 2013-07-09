@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <li>
     <a href="{% url 'admin:index' %}">Dashboard</a>
 </li>
@@ -7,7 +9,15 @@
     <a href="{{ app.url }}">{{ app.name }}</a>
     <ul>
         {% for model_module_name, model in app.models %}
-        <li><a href="{{ model.url }}">{{ model.name }}</a></li>
+            {% if model.url %}
+
+                <li><a href="{{ model.url }}">{{ model.name }}</a></li>
+
+            {% elif model.add_url %}
+
+                <li><a href="{{ model.add_url }}">{% trans 'Create new...' %} {{ model.name_singular|lower }}</a></li>
+
+            {% endif %}
         {% endfor %}
     </ul>
 </li>

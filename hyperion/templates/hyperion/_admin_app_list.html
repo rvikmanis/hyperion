@@ -10,21 +10,26 @@
     </caption>
     {% for model_module_name, model in app.models %}
         <tr>
+
+            {% if model.url %}
             <th scope="row"><a href="{{ model.url }}">{{ model.name }}</a></th>
-
-
-            {% if model.add_url %}
-
-            <td><a href="{{ model.add_url }}" class="addlink">{% trans 'Add' %}</a></td>
-
             {% else %}
-
-            <td>&nbsp;</td>
-
+            <th scope="row">{{ model.name }}</th>
             {% endif %}
 
-            <td><a href="{{ model.url }}" class="changelink">{% trans 'Change' %}</a></td>
+            {% if model.add_url %}
+            <td><a href="{{ model.add_url }}" class="addlink">{% trans 'Add' %}</a></td>
+            {% else %}
             <td>&nbsp;</td>
+            {% endif %}
+
+
+            {% if model.url %}
+            <td><a href="{{ model.url }}" class="changelink">{% trans 'Change' %}</a></td>
+            {% else %}
+            <td>&nbsp;</td>
+            {% endif %}
+
         </tr>
     {% endfor %}
     </table>

@@ -469,7 +469,7 @@ input[type=checkbox] {
 .module {
     margin-bottom: 15px;
     background: white;
-    box-shadow: 0px 5px 9px #ccc;
+    box-shadow: 0px 0px 9px #ccc;
 }
 
 .module p, .module ul, .module h3, .module h4, .module dl, .module pre {

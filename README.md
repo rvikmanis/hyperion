@@ -36,7 +36,9 @@ Installation
 Configuration
 --------------------
 
-By default hyperion shows all `admin.site.register`ed apps and models.
+### HYPERION_MENU_OVERRIDES
+
+By default hyperion shows all apps and models from `admin.site._registry`.
 
 To exclude `yourapp` from the menu add this to project settings:
 
@@ -91,3 +93,9 @@ Do the same with models:
         }
 
     }
+
+### HYPERION_ADMIN_SITE_TITLE
+
+Change the admin site title. Default is "Hyperion":
+
+    HYPERION_ADMIN_SITE_TITLE = 'My Administration System'

@@ -1,17 +1,16 @@
 {% extends "admin/base.html" %}
-{% load i18n admin_static %}
+{% load i18n admin_static hyperion_tags %}
 
-{% block title %}{{ title }} | {% trans 'Hyperion' %}{% endblock %}
+{% block title %}{{ title }} | {% admin_site_title %}{% endblock %}
 
 {% block branding %}
-<h1 id="site-name">{% trans 'Hyperion' %}</h1>
+<h1 id="site-name">{% admin_site_title %}</h1>
 {% endblock %}
 
 {% block nav-global %}
 
     <ul id="main_navigation">
 
-    {% load hyperion_tags %}
     {% admin_menu user for_menu=True %}
 
     </ul>
