@@ -3,7 +3,6 @@ Hyperion - django administration theme
 
 A nice simple theme for django admin.
 
-![Screenshot #1](http://s2.postimg.org/432zgo2op/hyperion.png)
 
 Features
 --------------
@@ -12,6 +11,15 @@ Features
 * Styles for FeinCMS item editor
 * Configurable admin-wide navigation
 * Pretty app labels
+
+
+Screenshots
+----------------
+Change list:
+![Screenshot #2](http://s23.postimg.org/x4jksqt09/hyperion_list.png)
+
+Change form:
+![Screenshot #1](http://s2.postimg.org/432zgo2op/hyperion.png)
 
 
 Requirements
