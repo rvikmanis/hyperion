@@ -53,7 +53,7 @@
 
 #changelist table thead th {
     padding: 5px;
-    white-space: nowrap;
+    white-space: wrap;
     vertical-align: middle;
     background: #679bc7;
     color: white;
@@ -302,4 +302,9 @@
     font-weight: bold;
     font-size: 1em;
     text-transform: uppercase;
+}
+
+.filter_select_fi {
+    font-size: 0.8em;
+    width: 160px;
 }

@@ -888,6 +888,7 @@ table#change-history tbody th {
 #main_navigation > li:hover > ul {
     display: block;
     min-width: 200px;
+    z-index: 9000;
 }
 #main_navigation > li:hover > ul > li > a {
     display: block;
