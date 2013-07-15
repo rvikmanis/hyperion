@@ -26,13 +26,13 @@ Change form:
 Requirements
 ------------------
 
-* Django 1.4
+* Django >= 1.4
 
 
 Compatibility
 ------------------
 
-* FeinCMS 1.6.2
+* FeinCMS >= 1.6.2
 
 
 
