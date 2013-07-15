@@ -17,13 +17,13 @@ Features
 Requirements
 ------------------
 
-* Django 1.5
+* Django 1.4
 
 
 Compatible with
 ------------------
 
-* FeinCMS 1.7.4
+* FeinCMS 1.6.2
 
 
 

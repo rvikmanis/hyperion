@@ -3,6 +3,8 @@ from django.contrib.admin.widgets import AdminSplitDateTime
 import django.db.models
 from django.utils.translation import ugettext as _
 
+
+# django 1.4 compat
 try:
     from django.utils.html import format_html
 except ImportError:
